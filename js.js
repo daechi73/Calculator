@@ -125,6 +125,13 @@ function multiply(n1, n2) {
 function divide(n1, n2) {
   return parseInt(n1) / parseInt(n2);
 }
+function clear() {
+  num1 = "";
+  num2 = "";
+  operator = "";
+  input.textContent = "";
+  display.textContent = "";
+}
 
 function operate(op, n1, n2) {
   switch (op) {
@@ -142,3 +149,63 @@ function operate(op, n1, n2) {
       break;
   }
 }
+//Event listener for each buttons when clicked
+//will grab the number/operator  and set it to coresponding num1,num2 & operator
+document.querySelectorAll("button").forEach((e) => {
+  e.addEventListener("click", (e) => {
+    let getInput = e.target.innerHTML; // returns as string
+
+    //At anytime clear button is clicked, it clears everything from memory.
+    if (getInput === "clear") {
+      clear();
+      return;
+    }
+
+    //checks if first input is number
+    if (!isNaN(getInput)) {
+      //third input logic; num expected
+      if (num1 != "" && operator != "") {
+        if (num2 == "") {
+          num2 = "";
+          input.textContent = "";
+        }
+        num2 += getInput;
+
+        input.textContent += getInput;
+        display.textContent += `${getInput}`;
+        console.log("num2: " + num2);
+      }
+      //first input logic; num expected
+      if (operator == "") {
+        num1 += getInput;
+        input.textContent += getInput;
+        console.log("num1: " + num1);
+      }
+    } else {
+      //second input logic; operator expected
+      if (num1 != "" && num2 == "") {
+        operator = getInput;
+        display.textContent = `${num1} ${operator} `;
+        console.log("operator: " + operator);
+      }
+      //fourth/final input logic;
+      if (num1 != "" && operator != "" && num2 != "") {
+        if (getInput === "=") {
+          input.textContent = operate(operator, num1, num2);
+          display.textContent += ` = ${input.textContent}`;
+          console.log("result: " + input.textContent);
+          num1 = input.textContent;
+          num2 = "";
+          operator = "";
+        } else {
+          input.textContent = operate(operator, num1, num2);
+          num1 = input.textContent;
+          operator = getInput;
+          display.textContent = `${num1} ${operator}`;
+          num2 = "";
+          console.log(operator);
+        }
+      }
+    }
+  });
+});
