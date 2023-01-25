@@ -105,3 +105,40 @@ mainContainer.appendChild(displayContainer);
 mainContainer.appendChild(btnContainer);
 
 //           *************js hardcode**************
+
+let process, operator, num1, num2;
+
+num1 = "";
+num2 = "";
+operator = "";
+
+//functions
+function add(n1, n2) {
+  return parseInt(n1) + parseInt(n2);
+}
+function subtract(n1, n2) {
+  return parseInt(n1) - parseInt(n2);
+}
+function multiply(n1, n2) {
+  return parseInt(n1) * parseInt(n2);
+}
+function divide(n1, n2) {
+  return parseInt(n1) / parseInt(n2);
+}
+
+function operate(op, n1, n2) {
+  switch (op) {
+    case "+":
+      return add(n1, n2);
+      break;
+    case "-":
+      return subtract(n1, n2);
+      break;
+    case "/":
+      return divide(n1, n2);
+      break;
+    case "*":
+      return multiply(n1, n2);
+      break;
+  }
+}
