@@ -6,13 +6,19 @@
 //
 
 //body children
+
+let outterBorder = document.createElement("div");
 let mainContainer = document.createElement("div");
-document.body.appendChild(mainContainer);
+
+document.body.appendChild(outterBorder);
+outterBorder.appendChild(mainContainer);
 mainContainer.classList.add("mainContainer");
+outterBorder.classList.add("outterBorder");
 
 //mainContainer childeren
 let displayContainer = document.createElement("div");
 let btnContainer = document.createElement("div");
+let clearContainer = document.createElement("div");
 let oneBtn = document.createElement("button");
 let twoBtn = document.createElement("button");
 let threeBtn = document.createElement("button");
@@ -38,31 +44,6 @@ sevenBtn.textContent = "7";
 eightBtn.textContent = "8";
 nineBtn.textContent = "9";
 
-// zeroBtn.style.height = "50px";
-// zeroBtn.style.width = "50px";
-// oneBtn.style.height = "50px";
-// oneBtn.style.width = "50px";
-// twoBtn.style.height = "50px";
-// twoBtn.style.width = "50px";
-// threeBtn.style.height = "50px";
-// threeBtn.style.width = "50px";
-// fourBtn.style.height = "50px";
-// fourBtn.style.width = "50px";
-// fiveBtn.style.height = "50px";
-// fiveBtn.style.width = "50px";
-// sixBtn.style.width
-
-// btnContainer.appendChild(zeroBtn);
-// btnContainer.appendChild(oneBtn);
-// btnContainer.appendChild(twoBtn);
-// btnContainer.appendChild(threeBtn);
-// btnContainer.appendChild(fourBtn);
-// btnContainer.appendChild(fiveBtn);
-// btnContainer.appendChild(sixBtn);
-// btnContainer.appendChild(sevenBtn);
-// btnContainer.appendChild(eightBtn);
-// btnContainer.appendChild(nineBtn);
-
 let addBtn = document.createElement("button");
 let subBtn = document.createElement("button");
 let mulBtn = document.createElement("button");
@@ -74,16 +55,16 @@ let input = document.createElement("div");
 let display = document.createElement("div");
 
 display.style.height = "20px";
-display.style.border = "solid";
+display.style.paddingTop = "5px";
 display.style.borderBottom = "none";
-display.style.width = "200px";
+display.style.width = "193px";
 display.style.paddingLeft = "5px";
 display.style.fontSize = "12px";
 input.style.paddingLeft = "5px";
 input.style.height = "20px";
-input.style.border = "solid";
 input.style.borderTop = "none";
-input.style.width = "200px";
+input.style.width = "193px";
+input.style.paddingBottom = "10px";
 
 addBtn.classList.add("addBtn");
 subBtn.classList.add("subBtn");
@@ -98,13 +79,12 @@ equalBtn.textContent = "=";
 clearBtn.textContent = "clear";
 
 //btnContainer children
-let rowOne = document.createElement("div");
+
 let rowTwo = document.createElement("div");
 let rowThree = document.createElement("div");
 let rowFour = document.createElement("div");
 let rowFive = document.createElement("div");
 
-rowOne.appendChild(clearBtn);
 rowTwo.appendChild(addBtn);
 rowTwo.appendChild(oneBtn);
 rowTwo.appendChild(twoBtn);
@@ -121,11 +101,13 @@ rowFive.appendChild(divBtn);
 rowFive.appendChild(zeroBtn);
 rowFive.appendChild(equalBtn);
 
-btnContainer.appendChild(rowOne);
 btnContainer.appendChild(rowTwo);
 btnContainer.appendChild(rowThree);
 btnContainer.appendChild(rowFour);
 btnContainer.appendChild(rowFive);
+
+//clearContainer children
+clearContainer.appendChild(clearBtn);
 
 //displayContainer children
 displayContainer.appendChild(display);
@@ -133,18 +115,39 @@ displayContainer.appendChild(input);
 
 //mainContainer Children
 mainContainer.appendChild(displayContainer);
+mainContainer.appendChild(clearContainer);
 mainContainer.appendChild(btnContainer);
 
-//css
-
+//css box resizing, indentations
+document.body.style.margin = "auto";
+document.body.style.width = "30%";
 mainContainer.style.display = "flex";
 mainContainer.style.flexDirection = "column";
+mainContainer.style.width = "200px";
+outterBorder.style.padding = "30px";
+outterBorder.style.border = "solid";
+outterBorder.style.width = "208px";
+outterBorder.style.paddingTop = "50px";
+outterBorder.style.marginTop = "150px";
+outterBorder.style.borderRadius = "10px";
+displayContainer.style.marginBottom = "30px";
+displayContainer.style.height = "44px";
+displayContainer.style.border = "solid";
+displayContainer.style.borderRadius = "5px";
+//btnContainer.style.border = "solid";
+btnContainer.style.width = "200px";
+
+//colors
+
+outterBorder.style.backgroundColor = "grey";
+displayContainer.style.backgroundColor = "white";
 
 let btns = document.querySelectorAll("button");
-
 btns.forEach((e) => {
   e.style.width = "50px";
   e.style.height = "50px";
+  e.style.borderRadius = "5px";
+  e.style.border = "solid";
   if (e.textContent === "=" || e.textContent === "clear") {
     clearBtn.style.width = "100px";
     equalBtn.style.width = "100px";
