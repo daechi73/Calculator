@@ -1,6 +1,9 @@
 //                       *****DOM creation*****
 
-//Dom layout: body->maincontainer->displayContainer ->
+//Dom layout: body->maincontainer->displayContainer
+//
+//                               ->btnContainer
+//
 
 //body children
 let mainContainer = document.createElement("div");
@@ -10,8 +13,6 @@ mainContainer.classList.add("mainContainer");
 //mainContainer childeren
 let displayContainer = document.createElement("div");
 let btnContainer = document.createElement("div");
-let numBtnContainer = document.createElement("div");
-let operatorBtnContainer = document.createElement("div");
 let oneBtn = document.createElement("button");
 let twoBtn = document.createElement("button");
 let threeBtn = document.createElement("button");
@@ -23,10 +24,8 @@ let eightBtn = document.createElement("button");
 let nineBtn = document.createElement("button");
 let zeroBtn = document.createElement("button");
 
-operatorBtnContainer.classList.add("operatorBtnContainer");
 displayContainer.classList.add("displayContainer");
 btnContainer.classList.add("btnContainer");
-numBtnContainer.classList.add("numBtnContainer");
 
 zeroBtn.textContent = "0";
 oneBtn.textContent = "1";
@@ -39,17 +38,30 @@ sevenBtn.textContent = "7";
 eightBtn.textContent = "8";
 nineBtn.textContent = "9";
 
-//numBtnContainer children
-numBtnContainer.appendChild(zeroBtn);
-numBtnContainer.appendChild(oneBtn);
-numBtnContainer.appendChild(twoBtn);
-numBtnContainer.appendChild(threeBtn);
-numBtnContainer.appendChild(fourBtn);
-numBtnContainer.appendChild(fiveBtn);
-numBtnContainer.appendChild(sixBtn);
-numBtnContainer.appendChild(sevenBtn);
-numBtnContainer.appendChild(eightBtn);
-numBtnContainer.appendChild(nineBtn);
+// zeroBtn.style.height = "50px";
+// zeroBtn.style.width = "50px";
+// oneBtn.style.height = "50px";
+// oneBtn.style.width = "50px";
+// twoBtn.style.height = "50px";
+// twoBtn.style.width = "50px";
+// threeBtn.style.height = "50px";
+// threeBtn.style.width = "50px";
+// fourBtn.style.height = "50px";
+// fourBtn.style.width = "50px";
+// fiveBtn.style.height = "50px";
+// fiveBtn.style.width = "50px";
+// sixBtn.style.width
+
+// btnContainer.appendChild(zeroBtn);
+// btnContainer.appendChild(oneBtn);
+// btnContainer.appendChild(twoBtn);
+// btnContainer.appendChild(threeBtn);
+// btnContainer.appendChild(fourBtn);
+// btnContainer.appendChild(fiveBtn);
+// btnContainer.appendChild(sixBtn);
+// btnContainer.appendChild(sevenBtn);
+// btnContainer.appendChild(eightBtn);
+// btnContainer.appendChild(nineBtn);
 
 let addBtn = document.createElement("button");
 let subBtn = document.createElement("button");
@@ -85,26 +97,61 @@ divBtn.textContent = "/";
 equalBtn.textContent = "=";
 clearBtn.textContent = "clear";
 
-//operatorBtnContainer children
-operatorBtnContainer.appendChild(equalBtn);
-operatorBtnContainer.appendChild(addBtn);
-operatorBtnContainer.appendChild(subBtn);
-operatorBtnContainer.appendChild(divBtn);
-operatorBtnContainer.appendChild(mulBtn);
-operatorBtnContainer.appendChild(clearBtn);
+//btnContainer children
+let rowOne = document.createElement("div");
+let rowTwo = document.createElement("div");
+let rowThree = document.createElement("div");
+let rowFour = document.createElement("div");
+let rowFive = document.createElement("div");
+
+rowOne.appendChild(clearBtn);
+rowTwo.appendChild(addBtn);
+rowTwo.appendChild(oneBtn);
+rowTwo.appendChild(twoBtn);
+rowTwo.appendChild(threeBtn);
+rowThree.appendChild(subBtn);
+rowThree.appendChild(fourBtn);
+rowThree.appendChild(fiveBtn);
+rowThree.appendChild(sixBtn);
+rowFour.appendChild(mulBtn);
+rowFour.appendChild(sevenBtn);
+rowFour.appendChild(eightBtn);
+rowFour.appendChild(nineBtn);
+rowFive.appendChild(divBtn);
+rowFive.appendChild(zeroBtn);
+rowFive.appendChild(equalBtn);
+
+btnContainer.appendChild(rowOne);
+btnContainer.appendChild(rowTwo);
+btnContainer.appendChild(rowThree);
+btnContainer.appendChild(rowFour);
+btnContainer.appendChild(rowFive);
 
 //displayContainer children
 displayContainer.appendChild(display);
 displayContainer.appendChild(input);
-//btnContainer children
 
-btnContainer.appendChild(numBtnContainer);
-btnContainer.appendChild(operatorBtnContainer);
 //mainContainer Children
 mainContainer.appendChild(displayContainer);
 mainContainer.appendChild(btnContainer);
 
-//           *************js hardcode**************
+//css
+
+mainContainer.style.display = "flex";
+mainContainer.style.flexDirection = "column";
+
+let btns = document.querySelectorAll("button");
+
+btns.forEach((e) => {
+  e.style.width = "50px";
+  e.style.height = "50px";
+  if (e.textContent === "=" || e.textContent === "clear") {
+    clearBtn.style.width = "100px";
+    equalBtn.style.width = "100px";
+  }
+});
+
+//        *************js hardcode**************
 
 let process, operator, num1, num2;
 
