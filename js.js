@@ -6,7 +6,8 @@
 //
 
 //body children
-
+document.body.style.display = "flex";
+document.body.style.justifyContent = "center";
 let outterBorder = document.createElement("div");
 let mainContainer = document.createElement("div");
 
