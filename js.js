@@ -58,14 +58,14 @@ let display = document.createElement("div");
 display.style.height = "20px";
 display.style.paddingTop = "5px";
 display.style.borderBottom = "none";
-display.style.width = "193px";
-display.style.paddingLeft = "5px";
+display.style.padding = "2px 5px 1px 5px";
 display.style.fontSize = "12px";
-input.style.paddingLeft = "5px";
+display.classList.add("display");
+
+input.classList.add("display-input");
+input.style.padding = "0 5px 2px 5px";
 input.style.height = "20px";
 input.style.borderTop = "none";
-input.style.width = "193px";
-input.style.paddingBottom = "10px";
 
 addBtn.classList.add("addBtn");
 subBtn.classList.add("subBtn");
@@ -121,22 +121,20 @@ mainContainer.appendChild(btnContainer);
 
 //css box resizing, indentations
 document.body.style.margin = "auto";
-document.body.style.width = "30%";
+document.body.style.width = "100%";
+document.body.style.height = "100%";
 mainContainer.style.display = "flex";
 mainContainer.style.flexDirection = "column";
-mainContainer.style.width = "200px";
-outterBorder.style.padding = "30px";
+outterBorder.style.padding = "50px 30px";
 outterBorder.style.border = "solid";
 outterBorder.style.width = "208px";
-outterBorder.style.paddingTop = "50px";
 outterBorder.style.marginTop = "100px";
 outterBorder.style.borderRadius = "10px";
 displayContainer.style.marginBottom = "30px";
 displayContainer.style.height = "44px";
 displayContainer.style.border = "solid";
+displayContainer.style.width = "100%";
 displayContainer.style.borderRadius = "5px";
-//btnContainer.style.border = "solid";
-btnContainer.style.width = "200px";
 
 //colors
 
@@ -145,13 +143,13 @@ displayContainer.style.backgroundColor = "white";
 
 let btns = document.querySelectorAll("button");
 btns.forEach((e) => {
-  e.style.width = "50px";
+  e.style.width = "25%";
   e.style.height = "50px";
   e.style.borderRadius = "5px";
   e.style.border = "solid";
   if (e.textContent === "=" || e.textContent === "clear") {
-    clearBtn.style.width = "100px";
-    equalBtn.style.width = "100px";
+    clearBtn.style.width = "50%";
+    equalBtn.style.width = "50%";
   }
 });
 
